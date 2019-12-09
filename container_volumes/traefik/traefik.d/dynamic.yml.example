@@ -1,0 +1,40 @@
+# File provider: dynamically loaded routers, middleware, and providers
+
+http:
+
+  # Add the router
+  routers:
+
+    redirect:
+      entryPoints:
+        - web
+      middlewares:
+        - redirect-to-https
+      service: service-nerve
+      rule: Host(`gitwriter.services.EXAMPLE.ORG`)
+
+
+
+  # Add the middleware
+  middlewares:
+
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+    secure:
+      headers:
+        framedeny: true
+        sslredirect: true
+        forceSTSHeader: true
+        browserXssFilter: true
+
+
+
+tls:
+  options:
+    default:
+      #minVersion: VersionTLS13
+      minVersion: VersionTLS12
+      #sniStrict: true
