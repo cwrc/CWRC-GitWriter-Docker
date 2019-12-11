@@ -6,7 +6,7 @@ http:
   # Add the router
   routers:
 
-    route-git-server-dev:
+    route-git-server-uat:
       entryPoints:
         - web-secure
       tls:
@@ -14,13 +14,13 @@ http:
       middlewares:
         - secure
       service: service-git-server-uat
-      rule: Host(`gitwriter.EXAMPLE.ORG`) && PathPrefix(`/github/`)
+      rule: Host(`gitwriter.services.EXAMPLE.ORG`) && PathPrefix(`/github/`)
 
 
   # Add the services
   services:
 
-    service-git-server-dev:
+    service-git-server-uat:
       loadBalancer:
         servers:
         # assumes dir name is GitWriter and Traefik part of same network as Gitwriter

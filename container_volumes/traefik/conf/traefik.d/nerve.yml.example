@@ -6,31 +6,25 @@ http:
   # Add the router
   routers:
 
-    route-git-server-dev:
+    route-nerve-dev:
       entryPoints:
         - web-secure
       tls:
         certResolver: leresolver
       middlewares:
         - secure
-        - validator-strip-pathprefix
-      service: service-git-server-uat
-      rule: Host(`gitwriter.EXAMPLE.ORG`) && PathPrefix(`/validator/`)
+      service: service-nerve-uat
+      rule: Host(`gitwriter.service.EXAMPLE.ORG`) && PathPrefix(`/ner/`)
 
-  middlewares:
-    validator-strip-pathprefix:
-      stripPrefix:
-        prefixes:
-          - "/validator"
 
   # Add the services
   services:
 
-    service-git-server-dev:
+    service-nerve-uat:
       loadBalancer:
         servers:
         # assumes dir name is GitWriter and Traefik part of same network as Gitwriter
         # https://stackoverflow.com/questions/38088279/communication-between-multiple-docker-compose-projects/38089080#38089080
-        - url: http://validator:8080/
+        - url: http://nerve:8080/
         passHostHeader: true
 

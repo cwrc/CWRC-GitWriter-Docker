@@ -6,7 +6,7 @@ http:
   # Add the router
   routers:
 
-    route-git-writer-dev:
+    route-git-writer-uat:
       entryPoints:
         - web-secure
       tls:
@@ -14,7 +14,7 @@ http:
       middlewares:
         - secure
       service: service-git-writer-uat
-      rule: Host(`gitwriter.EXAMPLE.ORG`)
+      rule: Host(`gitwriter.services.EXAMPLE.ORG`)
 
 
   # Add the services
