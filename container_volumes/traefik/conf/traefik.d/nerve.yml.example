@@ -13,8 +13,16 @@ http:
         certResolver: leresolver
       middlewares:
         - secure
+        - nerve-strip-pathprefix
       service: service-nerve-uat
-      rule: Host(`gitwriter.service.EXAMPLE.ORG`) && PathPrefix(`/ner/`)
+      rule: Host(`gitwriter.service.EXAMPLE.ORG`) && PathPrefix(`/nerve/`)
+
+       
+  middlewares:
+    nerve-strip-pathprefix:
+      stripPrefix:
+        prefixes:
+          - "/nerve"
 
 
   # Add the services
