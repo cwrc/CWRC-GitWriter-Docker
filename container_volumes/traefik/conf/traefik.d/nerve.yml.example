@@ -6,7 +6,7 @@ http:
   # Add the router
   routers:
 
-    route-nerve-dev:
+    route-nerve-uat:
       entryPoints:
         - web-secure
       tls:
@@ -17,7 +17,7 @@ http:
       service: service-nerve-uat
       rule: Host(`gitwriter.service.EXAMPLE.ORG`) && PathPrefix(`/nerve/`)
 
-       
+
   middlewares:
     nerve-strip-pathprefix:
       stripPrefix:
