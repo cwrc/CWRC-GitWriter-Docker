@@ -11,6 +11,8 @@ services:
 
   nerve:
     image: "cwrc/nerve:latest"
+    environment:
+      - LOG_LEVEL=VERBOSE # Log4J Logging level: WARN, VERBOSE
     restart: unless-stopped
     volumes:
       - ./container_volumes/nerve/:/usr/local/tomcat/logs
