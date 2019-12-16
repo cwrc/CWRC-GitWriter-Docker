@@ -10,7 +10,7 @@ http:
         - web
       middlewares:
         - redirect-to-https
-      service: service-git-writer-uat
+      service: service-gitwriter
       rule: Host(`gitwriter.services.EXAMPLE.ORG`)
 
 
