@@ -1,11 +1,6 @@
 version: '3.5'
 
-# Build the GitWrite with NERVE tool included in the same stack
-
-# Todo: 
-# * replace nginx with traefik (to handle routing & letsencrypt)
-# * create docker hub account to automatically build images and watchtower to automatically deploy
-# * create internal and external network; easier to understand naming of servers 
+# Build the GitWrite (dev branch) with NERVE tool included in the same stack
 
 services:
 
@@ -28,33 +23,18 @@ services:
     restart: unless-stopped
 
   gitwriter:
-    image: "cwrc/cwrc-gitwriter:latest"
+    image: "cwrc/cwrc-gitwriter:dev-latest"
     networks:
       - gitwriter-internal 
     restart: unless-stopped
 
   gitserver:
-    image: "cwrc/cwrc-gitserver:latest"
+    image: "cwrc/cwrc-gitserver:dev-latest"
     volumes:
       - ./container_volumes/cwrc-gitserver/config.js:/apps/CWRC-GitServer/config.js
     networks:
       - gitwriter-internal 
     restart: unless-stopped
-
-  # ToDo: investigate replacement with Traefik
-  # nginx:
-  #  image: nginx
-  #  links:
-  #    - gitwriter:gitwriter
-  #    - gitserver:gitserver
-  #    - nerve:nerve
-  #    - validator:validator
-  #  ports:
-  #    - 8200:80
-  #  volumes:
-  #    - ./container_volumes/nginx/nginx.conf:/etc/nginx/conf.d/cwrc.conf:ro
-  #  restart: unless-stopped
-
 
   traefik:
     image: "traefik:v2.1"
