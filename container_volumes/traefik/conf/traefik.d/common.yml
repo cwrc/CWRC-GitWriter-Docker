@@ -1,4 +1,5 @@
-# File provider: dynamically loaded routers, middleware, and providers
+# File provider: Common components
+# dynamically loaded routers, middleware, and providers
 
 http:
 

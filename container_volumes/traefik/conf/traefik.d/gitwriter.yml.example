@@ -23,7 +23,5 @@ http:
     service-gitwriter:
       loadBalancer:
         servers:
-          # assumes dir name is GitWriter and Traefik part of same network as Gitwriter
-          # https://stackoverflow.com/questions/38088279/communication-between-multiple-docker-compose-projects/38089080#38089080
           - url: http://gitwriter:3000/
         passHostHeader: true

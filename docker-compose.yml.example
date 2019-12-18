@@ -13,7 +13,6 @@ services:
     image: "cwrc/nerve:latest"
     environment:
       - LOG_LEVEL=VERBOSE # Log4J Logging level: WARN, VERBOSE
-    restart: unless-stopped
     volumes:
       - ./container_volumes/nerve/:/usr/local/tomcat/logs
     networks:
@@ -32,10 +31,6 @@ services:
     image: "cwrc/cwrc-gitwriter:latest"
     networks:
       - gitwriter-internal 
-    depends_on:
-      - gitserver
-      - nerve 
-      - validator 
     restart: unless-stopped
 
   gitserver:
@@ -62,7 +57,7 @@ services:
 
 
   traefik:
-    image: "traefik:v2.0"
+    image: "traefik:v2.1"
     command:
       - "--configFile=/etc/traefik/traefik.yml"
     ports:
@@ -78,8 +73,6 @@ services:
       - "./container_volumes/traefik/log/:/var/log/traefik"
       - "./container_volumes/letsencrypt:/var/letsencrypt/"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-    depends_on:
-      - gitwriter
     restart: unless-stopped
 
 

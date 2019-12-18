@@ -6,7 +6,7 @@ http:
   # Add the router
   routers:
 
-    route-nerve-uat:
+    route-nerve:
       entryPoints:
         - web-secure
       tls:
@@ -14,7 +14,7 @@ http:
       middlewares:
         - secure
         - nerve-strip-pathprefix
-      service: service-nerve-uat
+      service: service-nerve
       rule: Host(`gitwriter.service.EXAMPLE.ORG`) && PathPrefix(`/nerve/`)
 
 
@@ -28,11 +28,9 @@ http:
   # Add the services
   services:
 
-    service-nerve-uat:
+    service-nerve:
       loadBalancer:
         servers:
-        # assumes dir name is GitWriter and Traefik part of same network as Gitwriter
-        # https://stackoverflow.com/questions/38088279/communication-between-multiple-docker-compose-projects/38089080#38089080
-        - url: http://nerve:8080/
+          - url: http://nerve:8080/
         passHostHeader: true
 
