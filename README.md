@@ -60,8 +60,7 @@ The basics, clone this repository, modify the config files, and run docker-compo
 
 - Update `Client ID` and the `Client Secret` from above
 - Update `jwt_secret` with a randomly generated string of characters
-
-- Update `github_oath_callback` and `github_oath_callback` with the server host name
+- Update `github_client_origin`,`github_oath_callback` and `github_oath_callback` with the server host name
 
 **Ports:** By default, `docker-compose.yml` and `traefik.yml` setup ports `80` and `443`
 
