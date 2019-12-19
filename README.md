@@ -20,7 +20,7 @@ The goal, provide an easy to deploy instance of CWRC-Writer including commponent
 
 - Docker & Docker Compose
 
-## Comonfiguration
+## Configuration
 
 The basics, clone this repository, modify the config files, and run docker-compose to pull the DockerHub images and deploy GitWriter. There are two appraoches available
 
