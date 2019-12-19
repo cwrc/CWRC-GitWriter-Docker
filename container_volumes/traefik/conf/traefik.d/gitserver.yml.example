@@ -14,7 +14,7 @@ http:
       middlewares:
         - secure
       service: service-gitserver
-      rule: Host(`gitwriter.services.EXAMPLE.ORG`)&& (PathPrefix(`/github/`) || Path(`/schema`))
+      rule: Host(`gitwriter.services.EXAMPLE.ORG`)&& (PathPrefix(`/github/`) || PathPrefix(`/schema/`))
 
 
   # Add the services
