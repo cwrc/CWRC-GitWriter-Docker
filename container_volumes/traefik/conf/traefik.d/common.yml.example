@@ -1,24 +1,21 @@
 # File provider: Common components
-# dynamically loaded routers, middleware, and providers
 
 http:
 
   # Add the router
   routers:
-
     redirect:
       entryPoints:
         - web
       middlewares:
         - redirect-to-https
       service: service-gitwriter
-      rule: Host(`gitwriter.services.EXAMPLE.ORG`)
-
-
+      rule: Host(`YOUR.DOMAIN`)
+      # For multiple entrypoints use && or ||. e.g.: Host(`YOUR.DOMAIN`) && Host(`WWW.YOUR.DOMAIN`)
+      # For deep path cobine with Path() or PathPrefix(). e.g.: Host(`YOUR.DOMAIN`) && PathPrefix(`/schema/`)
 
   # Add the middleware
   middlewares:
-
     redirect-to-https:
       redirectScheme:
         scheme: https
@@ -30,8 +27,6 @@ http:
         sslredirect: true
         forceSTSHeader: true
         browserXssFilter: true
-
-
 
 tls:
   options:

@@ -34,7 +34,6 @@ certificatesResolvers:
       httpChallenge:
         entryPoint: "web"
 
-
 api:
   insecure: false 
   #insecure: true

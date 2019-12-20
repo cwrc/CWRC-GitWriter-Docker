@@ -44,11 +44,13 @@ The basics, clone this repository, modify the config files, and run docker-compo
 4. Replace / Complete the following:
 
 - E-mail for Let's Encrypt certificate generation within Traefik config:
-  - traefik.yml: `email: "USER@EXAMPLE.ORG"`
+  - traefik.yml: `email: "YOUR@EMAIL.COM"`
 - Host name: edit Traefik config adding the server host name
-  - dynamic.yml: ``rule: Host(`gitwriter.services.EXAMPLE.ORG`)``
-  - gitwriter.yml: ``rule: Host(`gitwriter.services.EXAMPLE.ORG`)``
-  - gitserver.yml: ``rule: Host(`gitwriter.services.EXAMPLE.ORG`)``
+  - common.yml: ``rule: Host(`YOUR.DOMAIN`)``
+  - gitwriter.yml: ``rule: Host(`YOUR.DOMAIN`)``
+  - gitserver.yml: ``rule: Host(`YOUR.DOMAIN`)``
+  - nerve.yml: ``rule: Host(`YOUR.DOMAIN`)``
+  - validator.yml: ``rule: Host(`YOUR.DOMAIN`)``
 
 5. GitHub Oauth App creation (in not already available. [Instructions](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
 

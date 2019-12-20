@@ -1,11 +1,9 @@
-# GitServer
-# File provider: dynamically loaded routers, middleware, and providers
+# File provider: GitWriter
 
 http:
 
   # Add the router
   routers:
-
     route-gitserver:
       entryPoints:
         - web-secure
@@ -14,15 +12,14 @@ http:
       middlewares:
         - secure
       service: service-gitserver
-      rule: Host(`gitwriter.services.EXAMPLE.ORG`)&& (PathPrefix(`/github/`) || PathPrefix(`/schema/`))
-
+      rule: Host(`YOUR.DOMAIN`) && (PathPrefix(`/github/`) || PathPrefix(`/schema`))
+      # For multiple entrypoints use && or ||. e.g.: Host(`YOUR.DOMAIN`) && Host(`WWW.YOUR.DOMAIN`)
+      # For deep path cobine with Path() or PathPrefix(). e.g.: Host(`YOUR.DOMAIN`) && PathPrefix(`/schema/`)
 
   # Add the services
   services:
-
     service-gitserver:
       loadBalancer:
         servers:
           - url: http://gitserver:3000/
         passHostHeader: true
-
