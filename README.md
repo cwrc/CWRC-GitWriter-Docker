@@ -38,6 +38,7 @@ The basics, clone this repository, modify the config files, and run docker-compo
 3. Make copies of the following files (remove the `.example` extension):
 
 - `container_volumes/cwrc-gitserver/config.js.example`: set the GitHub integration
+- `container_volumes/cwrc-gitwriter/config.js.example`: set the host for nerve and validator service
 - `container_volumes/traefik/traefik.yml`: set e-mail for Let's Encrypt
 - `container_volumes/traefik/traefik.d/*`: set the host name
 
