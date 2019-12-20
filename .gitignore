@@ -2,6 +2,6 @@ container_volumes/cwrc-gitserver/config.js
 container_volumes/nerve/
 container_volumes/validator/
 container_volumes/traefik/conf/*.yml
-container_volumes/traefik/conf/traefik.d/*.yml
+# container_volumes/traefik/conf/traefik.d/*.yml
 container_volumes/traefik/log/
 container_volumes/letsencrypt
