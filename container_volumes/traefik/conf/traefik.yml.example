@@ -35,6 +35,5 @@ certificatesResolvers:
         entryPoint: "web"
 
 api:
+  dashboard: true
   insecure: false 
-  #insecure: true
-  #dashboard: true
