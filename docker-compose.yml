@@ -45,8 +45,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      # Web UI (enabled by --api.insecure=true)
-      #- "8080:8080"
     networks:
       - external
       - gitwriter-internal 

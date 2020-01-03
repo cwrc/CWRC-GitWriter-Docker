@@ -1,4 +1,5 @@
-# File provider: GitWriter
+# GitServer
+# File provider: dynamically loaded routers, middleware, and providers
 
 http:
 
@@ -14,7 +15,7 @@ http:
       service: service-gitserver
       rule: Host(`YOUR.DOMAIN`) && (PathPrefix(`/github/`) || PathPrefix(`/schema`))
       # For multiple entrypoints use && or ||. e.g.: Host(`YOUR.DOMAIN`) && Host(`WWW.YOUR.DOMAIN`)
-      # For deep path cobine with Path() or PathPrefix(). e.g.: Host(`YOUR.DOMAIN`) && PathPrefix(`/schema/`)
+      # For deep path combine with Path() or PathPrefix(). e.g.: Host(`YOUR.DOMAIN`) && PathPrefix(`/schema/`)
 
   # Add the services
   services:

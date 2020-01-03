@@ -1,4 +1,5 @@
 # File provider: Common components
+# dynamically loaded routers, middleware, and providers
 
 http:
 
@@ -12,7 +13,7 @@ http:
       service: service-gitwriter
       rule: Host(`YOUR.DOMAIN`)
       # For multiple entrypoints use && or ||. e.g.: Host(`YOUR.DOMAIN`) && Host(`WWW.YOUR.DOMAIN`)
-      # For deep path cobine with Path() or PathPrefix(). e.g.: Host(`YOUR.DOMAIN`) && PathPrefix(`/schema/`)
+      # For deep path combine with Path() or PathPrefix(). e.g.: Host(`YOUR.DOMAIN`) && PathPrefix(`/schema/`)
 
   # Add the middleware
   middlewares:
