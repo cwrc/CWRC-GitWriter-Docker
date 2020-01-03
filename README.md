@@ -37,44 +37,56 @@ The basics, clone this repository, modify the config files, and run docker-compo
 
 3. Make copies of the following files (remove the `.example` extension):
 
-- `container_volumes/cwrc-gitserver/config.js.example`: set the GitHub integration
-- `container_volumes/cwrc-gitwriter/config.js.example`: set the host for nerve and validator service
-- `container_volumes/traefik/traefik.yml`: set e-mail for Let's Encrypt
-- `container_volumes/traefik/traefik.d/*`: set the host name
+- `container_volumes/traefik/traefik.yml`: set e-mail for Let's Encrypt (Step 4)
+- `container_volumes/traefik/traefik.d/*`: set the host name (Step 5)
+- `container_volumes/cwrc-gitserver/config.js.example`: set the GitHub integration (Step 6-7)
+- `container_volumes/cwrc-gitwriter/config.js.example`: set the host for nerve and validator service (Step 8)
 
-4. Replace / Complete the following:
+4. Setup Let's Encrypt certificate generation
 
-- E-mail for Let's Encrypt certificate generation within Traefik config:
-  - traefik.yml: `email: "YOUR@EMAIL.COM"`
-- Host name: edit Traefik config adding the server host name
-  - common.yml: ``rule: Host(`YOUR.DOMAIN`)``
-  - gitwriter.yml: ``rule: Host(`YOUR.DOMAIN`)``
-  - gitserver.yml: ``rule: Host(`YOUR.DOMAIN`)``
-  - nerve.yml: ``rule: Host(`YOUR.DOMAIN`)``
-  - validator.yml: ``rule: Host(`YOUR.DOMAIN`)``
+- traefik.yml: `email: "YOUR@EMAIL.COM"`
 
-5. GitHub Oauth App creation (in not already available. [Instructions](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
+5. Setup host rules
+
+- api.yml: ``rule: Host(`YOUR.DOMAIN`)`` and `"USER:PASSWORD"`. Use `htpasswd` to create an ecrypted password. (e.g., `htpasswd -nb admin secure_password`)
+- common.yml: ``rule: Host(`YOUR.DOMAIN`)``
+- gitserver.yml: ``rule: Host(`YOUR.DOMAIN`)``
+- gitwriter.yml: ``rule: Host(`YOUR.DOMAIN`)``
+- nerve.yml: ``rule: Host(`YOUR.DOMAIN`)``
+- validator.yml: ``rule: Host(`YOUR.DOMAIN`)``
+
+6. GitHub Oauth App creation (in not already available. [Instructions](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
 
 - `Homepage URL`, use `https://${your_host_from_above}/`,
 - `Authorization callback URL`, use `https://${your_host_from_above}/github/callback`
 - Record `Client ID` and the `Client Secret` for the next step
 
-6. Update config for GitHub OAuth connectivity; details <https://github.com/cwrc/CWRC-GitServer#config>
+7. Update config for GitHub OAuth connectivity; details <https://github.com/cwrc/CWRC-GitServer#config>
+
+On gitserver.yml:
 
 - Update `Client ID` and the `Client Secret` from above
 - Update `jwt_secret` with a randomly generated string of characters
 - Update `github_client_origin`,`github_oath_callback` and `github_oath_callback` with the server host name
+
+8. Setup config for Nerve and Validator service.
+
+On gitwriter.yml:
+
+- `nerveUrl: 'https://YOUR.DOMAIN/nerve/'`,
+- `validationUrl: 'https://YOUR.DOMAIN/validator/'`
 
 **Ports:** By default, `docker-compose.yml` and `traefik.yml` setup ports `80` and `443`
 
 ## Deployment
 
 - `https://${your_host_from_above}/` will be the site URL of CWRC-Writer
-
 - `docker-compose up -d` will launch the containers
-
 - `docker-compose logs -f` will follow the logs produced by the containers
-
 - `docker-compose pull` will pull new images from DockerHub
-
 - `docker-compose down` will stop the containers
+
+## Dashboard
+
+To access Trafeik Dashboard, naviate to the url you setup on api.yml (e.g., `https://YOUR.DOMAIN/dashboard/`).
+Use the user and password you setup.
