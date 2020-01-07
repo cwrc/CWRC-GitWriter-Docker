@@ -1,7 +1,7 @@
 {
 	"cwrcRootUrl": "",
 	"nerveUrl": "https://YOUR.DOMAIN/nerve/",
-	"validationUrl": "https://YOUR.DOMAIN/validator/",
+	"validationUrl": "https://YOUR.DOMAIN/validator/validate.html",
 	"schema": {
 		"schemaProxyUrl": ".",
 		"schemas": [

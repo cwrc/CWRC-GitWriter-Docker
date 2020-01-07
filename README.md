@@ -74,7 +74,7 @@ On cwrc-gitserver/config.js:
 On cwrc-gitwriter/config.json:
 
 - `nerveUrl: 'https://YOUR.DOMAIN/nerve/'`,
-- `validationUrl: 'https://YOUR.DOMAIN/validator/'`
+- `validationUrl: 'https://YOUR.DOMAIN/validator/validate.html'`
 
 ## Deployment
 
