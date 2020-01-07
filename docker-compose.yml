@@ -33,7 +33,7 @@ services:
   gitserver:
     image: "cwrc/cwrc-gitserver:dev-latest"
     volumes:
-      - ./container_volumes/cwrc-gitserver/config.js:/apps/CWRC-GitServer/config.js
+      - ./container_volumes/cwrc-gitserver/config.json:/apps/CWRC-GitServer/config.json
     networks:
       - gitwriter-internal 
     restart: unless-stopped

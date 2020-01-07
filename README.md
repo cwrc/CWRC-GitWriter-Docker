@@ -39,7 +39,7 @@ The basics, clone this repository, modify the config files, and run docker-compo
 
 - `container_volumes/traefik/traefik.yml`: set e-mail for Let's Encrypt (Step 4)
 - `container_volumes/traefik/traefik.d/*`: set the host name (Step 5)
-- `container_volumes/cwrc-gitserver/config.js.example`: set the GitHub integration (Step 6-7)
+- `container_volumes/cwrc-gitserver/config.json.example`: set the GitHub integration (Step 6-7)
 - `container_volumes/cwrc-gitwriter/config.json.example`: set the host for nerve and validator service (Step 8)
 
 4. Setup Let's Encrypt certificate generation
@@ -63,7 +63,7 @@ The basics, clone this repository, modify the config files, and run docker-compo
 
 7. Update config for GitHub OAuth connectivity; details <https://github.com/cwrc/CWRC-GitServer#config>
 
-On cwrc-gitserver/config.js:
+On cwrc-gitserver/config.json:
 
 - Update `Client ID` and the `Client Secret` from above
 - Update `jwt_secret` with a randomly generated string of characters
