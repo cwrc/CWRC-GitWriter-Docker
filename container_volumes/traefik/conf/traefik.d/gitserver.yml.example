@@ -5,6 +5,7 @@ http:
 
   # Add the router
   routers:
+
     route-gitserver:
       entryPoints:
         - web-secure
@@ -19,6 +20,7 @@ http:
 
   # Add the services
   services:
+
     service-gitserver:
       loadBalancer:
         servers:

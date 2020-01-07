@@ -5,6 +5,7 @@ http:
 
   # Add the router
   routers:
+
     redirect:
       entryPoints:
         - web
@@ -17,6 +18,7 @@ http:
 
   # Add the middleware
   middlewares:
+
     redirect-to-https:
       redirectScheme:
         scheme: https
@@ -32,6 +34,6 @@ http:
 tls:
   options:
     default:
-      #minVersion: VersionTLS13
       minVersion: VersionTLS12
+      #minVersion: VersionTLS13
       #sniStrict: true

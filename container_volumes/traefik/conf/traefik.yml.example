@@ -8,23 +8,23 @@ accessLog:
   bufferingSize: 100
 
 providers:
+
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
+    
   file:
     directory: "/etc/traefik/traefik.d/"
     watch: true
 
 ## Static configuration
 entryPoints:
+
   web:
     address: ":80"
 
   web-secure:
     address: ":443"
-
-#  web-admin:
-#    address: ":8080"
 
 certificatesResolvers:
   leresolver:
@@ -36,4 +36,3 @@ certificatesResolvers:
 
 api:
   dashboard: true
-  insecure: false 
