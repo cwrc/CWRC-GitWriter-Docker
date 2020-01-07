@@ -63,7 +63,7 @@ The basics, clone this repository, modify the config files, and run docker-compo
 
 7. Update config for GitHub OAuth connectivity; details <https://github.com/cwrc/CWRC-GitServer#config>
 
-On gitserver.js:
+On cwrc-gitserver/config.js:
 
 - Update `Client ID` and the `Client Secret` from above
 - Update `jwt_secret` with a randomly generated string of characters
@@ -71,7 +71,7 @@ On gitserver.js:
 
 8. Setup config for Nerve and Validator service.
 
-On gitwriter.json:
+On cwrc-gitwriter/config.json:
 
 - `nerveUrl: 'https://YOUR.DOMAIN/nerve/'`,
 - `validationUrl: 'https://YOUR.DOMAIN/validator/'`
