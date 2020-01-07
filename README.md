@@ -40,7 +40,7 @@ The basics, clone this repository, modify the config files, and run docker-compo
 - `container_volumes/traefik/traefik.yml`: set e-mail for Let's Encrypt (Step 4)
 - `container_volumes/traefik/traefik.d/*`: set the host name (Step 5)
 - `container_volumes/cwrc-gitserver/config.js.example`: set the GitHub integration (Step 6-7)
-- `container_volumes/cwrc-gitwriter/config.js.example`: set the host for nerve and validator service (Step 8)
+- `container_volumes/cwrc-gitwriter/config.json.example`: set the host for nerve and validator service (Step 8)
 
 4. Setup Let's Encrypt certificate generation
 
@@ -63,7 +63,7 @@ The basics, clone this repository, modify the config files, and run docker-compo
 
 7. Update config for GitHub OAuth connectivity; details <https://github.com/cwrc/CWRC-GitServer#config>
 
-On gitserver.yml:
+On gitserver.js:
 
 - Update `Client ID` and the `Client Secret` from above
 - Update `jwt_secret` with a randomly generated string of characters
@@ -71,12 +71,10 @@ On gitserver.yml:
 
 8. Setup config for Nerve and Validator service.
 
-On gitwriter.yml:
+On gitwriter.json:
 
 - `nerveUrl: 'https://YOUR.DOMAIN/nerve/'`,
 - `validationUrl: 'https://YOUR.DOMAIN/validator/'`
-
-**Ports:** By default, `docker-compose.yml` and `traefik.yml` setup ports `80` and `443`
 
 ## Deployment
 

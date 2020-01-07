@@ -25,7 +25,7 @@ services:
   gitwriter:
     image: "cwrc/cwrc-gitwriter:dev-latest"
     volumes:
-      - ./container_volumes/cwrc-gitwriter/config.js:/apps/CWRC-GitWriter/src/js/config.js
+      - "./container_volumes/cwrc-gitwriter/config.json:/apps/CWRC-GitWriter/build/config/config.json"
     networks:
       - gitwriter-internal 
     restart: unless-stopped
