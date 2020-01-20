@@ -1,8 +1,16 @@
+docker-compose-dev.yml
+
+container_volumes/certs/cwrc-gitwriter-localhost.key
+container_volumes/certs/cwrc-gitwriter-localhost.crt
+
 container_volumes/cwrc-gitserver/*.json
 container_volumes/cwrc-gitwriter/*.json
 container_volumes/nerve/
 container_volumes/validator/
+
 container_volumes/letsencrypt
+
+container_volumes/traefik/*.yml
 container_volumes/traefik/conf/*.yml
-container_volumes/traefik/conf/traefik.d/*.yml
+container_volumes/traefik/conf-dev/
 container_volumes/traefik/log/
