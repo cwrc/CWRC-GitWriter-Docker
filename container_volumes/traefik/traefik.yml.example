@@ -14,7 +14,7 @@ providers:
     exposedByDefault: false
     
   file:
-    directory: "/etc/traefik/traefik.d/"
+    directory: "/etc/traefik/conf/"
     watch: true
 
 ## Static configuration
