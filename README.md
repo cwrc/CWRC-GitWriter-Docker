@@ -48,7 +48,7 @@ The basics, clone this repository, modify the config files, and run docker-compo
 
 5. Setup host rules
 
-- api.yml: ``rule: Host(`YOUR.DOMAIN`)`` and `"USER:PASSWORD"`. Use `htpasswd` to create an ecrypted password. (e.g., `htpasswd -nb admin secure_password`)
+- traefik-api.yml: ``rule: Host(`YOUR.DOMAIN`)`` and `"USER:PASSWORD"`. Use `htpasswd` to create an ecrypted password. (e.g., `htpasswd -nb admin secure_password`)
 - common.yml: ``rule: Host(`YOUR.DOMAIN`)``
 - gitserver.yml: ``rule: Host(`YOUR.DOMAIN`)``
 - gitwriter.yml: ``rule: Host(`YOUR.DOMAIN`)``
@@ -86,5 +86,5 @@ On cwrc-gitwriter/config.json:
 
 ## Dashboard
 
-To access Trafeik Dashboard, naviate to the url you setup on api.yml (e.g., `https://YOUR.DOMAIN/dashboard/`).
+To access Trafeik Dashboard, naviate to the url you setup on traefik-api.yml (e.g., `https://YOUR.DOMAIN/dashboard/`).
 Use the user and password you setup.
