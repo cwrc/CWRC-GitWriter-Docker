@@ -1,0 +1,33 @@
+# Internal API
+# Provide access to Traefik Dashboard
+
+http:
+
+  # Add the router
+  routers:
+
+    api-redirect:
+      rule: Host(`YOUR.DOMAIN`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+      entryPoints:
+        - web
+      middlewares:
+        - redirect-to-https
+      service: api@internal
+
+    api:
+      rule: Host(`YOUR.DOMAIN`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: leresolver
+      middlewares:
+        - auth
+      service: api@internal
+
+  # Add the middleware
+  middlewares:
+    auth:
+      basicAuth:
+        users:
+          - "USER:PASSWORD"
+  

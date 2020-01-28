@@ -12,9 +12,9 @@ http:
       middlewares:
         - redirect-to-https
       service: service-gitwriter
-      rule: Host(`gitwriter.services.EXAMPLE.ORG`)
-
-
+      rule: Host(`YOUR.DOMAIN`)
+      # For multiple entrypoints use && or ||. e.g.: Host(`YOUR.DOMAIN`) && Host(`WWW.YOUR.DOMAIN`)
+      # For deep path combine with Path() or PathPrefix(). e.g.: Host(`YOUR.DOMAIN`) && PathPrefix(`/schema/`)
 
   # Add the middleware
   middlewares:
@@ -31,11 +31,9 @@ http:
         forceSTSHeader: true
         browserXssFilter: true
 
-
-
 tls:
   options:
     default:
-      #minVersion: VersionTLS13
       minVersion: VersionTLS12
+      #minVersion: VersionTLS13
       #sniStrict: true

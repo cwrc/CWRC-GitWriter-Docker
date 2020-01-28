@@ -15,15 +15,16 @@ http:
         - secure
         - nerve-strip-pathprefix
       service: service-nerve
-      rule: Host(`gitwriter.service.EXAMPLE.ORG`) && PathPrefix(`/nerve/`)
-
+      rule: Host(`YOUR.DOMAIN`) && PathPrefix(`/nerve/`)
+      # For multiple entrypoints use && or ||. e.g.: Host(`YOUR.DOMAIN`) && Host(`WWW.YOUR.DOMAIN`)
+      # For deep path combine with Path() or PathPrefix(). e.g.: Host(`YOUR.DOMAIN`) && PathPrefix(`/schema/`)
 
   middlewares:
+
     nerve-strip-pathprefix:
       stripPrefix:
         prefixes:
           - "/nerve"
-
 
   # Add the services
   services:
@@ -33,4 +34,3 @@ http:
         servers:
           - url: http://nerve:8080/
         passHostHeader: true
-

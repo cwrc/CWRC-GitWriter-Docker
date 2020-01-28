@@ -14,8 +14,9 @@ http:
       middlewares:
         - secure
       service: service-gitserver
-      rule: Host(`gitwriter.services.EXAMPLE.ORG`) && PathPrefix(`/github/`)
-
+      rule: Host(`YOUR.DOMAIN`) && (PathPrefix(`/github/`) || PathPrefix(`/schema`))
+      # For multiple entrypoints use && or ||. e.g.: Host(`YOUR.DOMAIN`) && Host(`WWW.YOUR.DOMAIN`)
+      # For deep path combine with Path() or PathPrefix(). e.g.: Host(`YOUR.DOMAIN`) && PathPrefix(`/schema/`)
 
   # Add the services
   services:
@@ -25,4 +26,3 @@ http:
         servers:
           - url: http://gitserver:3000/
         passHostHeader: true
-

@@ -1,0 +1,67 @@
+version: "3.5"
+
+# Build the GitWrite (dev branch) with NERVE tool included in the same stack
+
+services:
+  traefik:
+    image: traefik:v2.1
+    command:
+      - --configFile=/etc/traefik/traefik.yml
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - cwrc-gitwriter
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./container_volumes/traefik/:/etc/traefik
+      - ./container_volumes/letsencrypt:/var/letsencrypt/
+      - ./container_volumes/traefik/log/:/var/log/traefik
+    restart: unless-stopped
+
+  gitserver:
+    image: cwrc/cwrc-gitserver:dev-latest
+    volumes:
+      - ./container_volumes/cwrc-gitserver/config.json:/apps/CWRC-GitServer/config.json
+    networks:
+      - cwrc-gitwriter
+    restart: unless-stopped
+
+  gitwriter:
+    image: cwrc/cwrc-gitwriter:dev-latest
+    volumes:
+      - ./container_volumes/cwrc-gitwriter/config.json:/apps/CWRC-GitWriter/build/config/config.json
+    networks:
+      - cwrc-gitwriter
+    restart: unless-stopped
+
+  validator:
+    image: cwrc/cwrc-validator:latest
+    volumes:
+      - ./container_volumes/validator/:/usr/local/tomcat/logs
+    networks:
+      - cwrc-gitwriter
+    restart: unless-stopped
+
+  nerve:
+    image: cwrc/nerve:latest-dev
+    environment:
+      - LOG_LEVEL=VERBOSE # Log4J Logging level: WARN, VERBOSE
+    volumes:
+      - ./container_volumes/nerve/:/usr/local/tomcat/logs
+    networks:
+      - cwrc-gitwriter
+    restart: unless-stopped
+
+  # optional: poll DockerHub and update if image changes
+  watchtower:
+    image: containrrr/watchtower
+    command:
+      - --cleanup
+      - --interval=300
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
+
+networks:
+  cwrc-gitwriter:
