@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
 
   gitserver:
-    image: cwrc/cwrc-gitserver:dev-latest
+    image: cwrc/cwrc-gitserver:latest
     volumes:
       - ./container_volumes/cwrc-gitserver/config.json:/apps/CWRC-GitServer/config.json
     networks:
@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   gitwriter:
-    image: cwrc/cwrc-gitwriter:dev-latest
+    image: cwrc/cwrc-gitwriter:latest
     volumes:
       - ./container_volumes/cwrc-gitwriter/config.json:/apps/CWRC-GitWriter/build/config/config.json
     networks:
@@ -44,7 +44,7 @@ services:
     restart: unless-stopped
 
   nerve:
-    image: cwrc/nerve:latest-dev
+    image: cwrc/nerve:latest
     environment:
       - LOG_LEVEL=VERBOSE # Log4J Logging level: WARN, VERBOSE
     volumes:
