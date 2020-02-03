@@ -12,4 +12,4 @@
     "templates_path": "templates",
     "jwt_secret_for_testing": "someSecret",
     "personal_oath_for_testing": "putYourPersonalOauthHere"
-};
+}
