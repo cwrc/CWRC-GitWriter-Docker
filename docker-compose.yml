@@ -4,7 +4,7 @@ version: "3.5"
 
 services:
   traefik:
-    image: traefik:v2.1
+    image: traefik:v2.1.6
     command:
       - --configFile=/etc/traefik/traefik.yml
     ports:
