@@ -35,18 +35,18 @@ The basics, clone this repository, modify the config files, and run docker-compo
 
 **Change to development branch**: `cd CWRC-GitWriter-Docker && git checkout development`
 
-2. Make copies of the following files (remove the `.example` extension):
+2.Make copies of the following files (remove the `.example` extension):
 
 - `container_volumes/traefik/traefik.yml`: set e-mail for Let's Encrypt (Step 4)
 - `container_volumes/traefik/conf/*`: set the host name (Step 5)
 - `container_volumes/cwrc-gitserver/config.json.example`: set the GitHub integration (Step 6-7)
 - `container_volumes/cwrc-gitwriter/config.json.example`: set the host for nerve and validator service (Step 8)
 
-3. Setup Let's Encrypt certificate generation
+3.Setup Let's Encrypt certificate generation
 
 - traefik.yml: `email: "YOUR@EMAIL.COM"`
 
-4. Setup host rules
+4.Setup host rules
 
 - traefik-api.yml: ``rule: Host(`YOUR.DOMAIN`)`` and `"USER:PASSWORD"`. Use `htpasswd` to create an ecrypted password. (e.g., `htpasswd -nb admin secure_password`)
 - common.yml: ``rule: Host(`YOUR.DOMAIN`)``
@@ -55,13 +55,13 @@ The basics, clone this repository, modify the config files, and run docker-compo
 - nerve.yml: ``rule: Host(`YOUR.DOMAIN`)``
 - validator.yml: ``rule: Host(`YOUR.DOMAIN`)``
 
-5. GitHub Oauth App creation (in not already available. [Instructions](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
+5.GitHub Oauth App creation (in not already available. [Instructions](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
 
 - `Homepage URL`, use `https://${your_host_from_above}/`,
 - `Authorization callback URL`, use `https://${your_host_from_above}/github/callback`
 - Record `Client ID` and the `Client Secret` for the next step
 
-6. Update config for GitHub OAuth connectivity; details <https://github.com/cwrc/CWRC-GitServer#config>
+6.Update config for GitHub OAuth connectivity; details <https://github.com/cwrc/CWRC-GitServer#config>
 
 On cwrc-gitserver/config.json:
 
@@ -69,12 +69,21 @@ On cwrc-gitserver/config.json:
 - Update `jwt_secret` with a randomly generated string of characters
 - Update `github_client_origin`,`github_oath_callback` and `github_oath_callback` with the server host name
 
-7. Setup config for Nerve and Validator service.
+7.Setup  CWRC-GitWriter config.
+
+CWRC-GitWriter comes with basic configurations. Relevant information for a server setup is the following:
 
 On cwrc-gitwriter/config.json:
 
 - `nerveUrl: 'https://YOUR.DOMAIN/nerve/'`,
 - `validationUrl: 'https://YOUR.DOMAIN/validator/validate.html'`
+
+Also, provide a username to access GeoNames' service:
+
+- `lookups: { geonames: { username": "YOUR.USERNAME"} }`
+Note that if a username is not provided, CWRC-Git-Writer will throw an error when trying to access GeoNames. You can create a free user account here account: [https://www.geonames.org/login](https://www.geonames.org/login)
+
+See more about the config file here: [https://github.com/cwrc/CWRC-GitWriter/blob/master/README.md](https://github.com/cwrc/CWRC-GitWriter/blob/master/README.md)
 
 ## Deployment
 
