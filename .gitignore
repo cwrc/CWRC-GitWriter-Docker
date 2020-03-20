@@ -7,4 +7,8 @@ container_volumes/letsencrypt
 
 container_volumes/traefik/*.yml
 container_volumes/traefik/conf/*.yml
+container_volumes/traefik/conf-dev/*.yml
 container_volumes/traefik/log/
+
+container_volumes/certs
+docker-compose-dev.yml
