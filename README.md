@@ -33,6 +33,8 @@ The basics, clone this repository, modify the config files, and run docker-compo
 
 1. Clone repository: `https://github.com/cwrc/CWRC-GitWriter-Docker.git`
 
+**Change to development branch**: `cd CWRC-GitWriter-Docker && git checkout development`
+
 2.Make copies of the following files (remove the `.example` extension):
 
 - `container_volumes/traefik/traefik.yml`: set e-mail for Let's Encrypt (Step 4)
