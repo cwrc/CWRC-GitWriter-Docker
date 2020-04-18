@@ -1,10 +1,10 @@
-version: "3.5"
+version: "3.7"
 
 # Build the GitWrite (dev branch) with NERVE tool included in the same stack
 
 services:
   traefik:
-    image: traefik:v2.1.6
+    image: traefik:v2.2
     command:
       - --configFile=/etc/traefik/traefik.yml
     ports:
