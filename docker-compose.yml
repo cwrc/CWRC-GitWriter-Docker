@@ -44,7 +44,7 @@ services:
     restart: unless-stopped
 
   nerve:
-    image: cwrc/nerve:latest
+    image: registry.gitlab.com/calincs/conversion/nerve/releases:latest
     environment:
       - LOG_LEVEL=VERBOSE # Log4J Logging level: WARN, VERBOSE
     volumes:
