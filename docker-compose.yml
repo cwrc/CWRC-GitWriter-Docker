@@ -4,6 +4,7 @@ version: "3.7"
 
 services:
   traefik:
+    container_name: traefik
     image: traefik:v2.2
     command:
       - --configFile=/etc/traefik/traefik.yml
@@ -20,6 +21,7 @@ services:
     restart: unless-stopped
 
   gitserver:
+    container_name: gitserver
     image: cwrc/cwrc-gitserver:latest
     volumes:
       - ./container_volumes/cwrc-gitserver/config.json:/apps/CWRC-GitServer/config.json
@@ -28,6 +30,7 @@ services:
     restart: unless-stopped
 
   gitwriter:
+    container_name: gitwriter
     image: cwrc/cwrc-gitwriter:latest
     volumes:
       - ./container_volumes/cwrc-gitwriter/config.json:/apps/CWRC-GitWriter/build/config/config.json
@@ -36,6 +39,7 @@ services:
     restart: unless-stopped
 
   validator:
+    container_name: validator
     image: cwrc/cwrc-validator:latest
     volumes:
       - ./container_volumes/validator/:/usr/local/tomcat/logs
@@ -44,6 +48,7 @@ services:
     restart: unless-stopped
 
   nerve:
+    container_name: nerve
     image: registry.gitlab.com/calincs/conversion/nerve/releases:latest
     environment:
       - LOG_LEVEL=VERBOSE # Log4J Logging level: WARN, VERBOSE
@@ -55,6 +60,7 @@ services:
 
   # optional: poll DockerHub and update if image changes
   watchtower:
+    container_name: watchtower
     image: containrrr/watchtower
     command:
       - --cleanup
