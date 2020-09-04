@@ -49,7 +49,7 @@ services:
 
   nerve:
     container_name: nerve
-    image: registry.gitlab.com/calincs/conversion/nerve/releases:latest
+    image: registry.gitlab.com/calincs/conversion/nssi:latest
     environment:
       - LOG_LEVEL=VERBOSE # Log4J Logging level: WARN, VERBOSE
     volumes:
