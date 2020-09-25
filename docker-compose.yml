@@ -24,7 +24,7 @@ services:
     container_name: gitserver
     image: cwrc/cwrc-gitserver:latest
     volumes:
-      - ./container_volumes/cwrc-gitserver/config.json:/apps/CWRC-GitServer/config.json
+      - ./container_volumes/cwrc-gitserver/config/:/apps/CWRC-GitServer/config/
     networks:
       - cwrc-gitwriter
     restart: unless-stopped
@@ -33,7 +33,7 @@ services:
     container_name: gitwriter
     image: cwrc/cwrc-gitwriter:latest
     volumes:
-      - ./container_volumes/cwrc-gitwriter/config.json:/apps/CWRC-GitWriter/build/config/config.json
+      - ./container_volumes/cwrc-gitwriter/config/:/apps/CWRC-GitWriter/build/config/
     networks:
       - cwrc-gitwriter
     restart: unless-stopped
