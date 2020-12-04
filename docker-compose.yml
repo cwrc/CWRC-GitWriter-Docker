@@ -5,7 +5,7 @@ version: "3.7"
 services:
   traefik:
     container_name: traefik
-    image: traefik:v2.2
+    image: traefik:v2.3
     command:
       - --configFile=/etc/traefik/traefik.yml
     ports:
@@ -24,7 +24,7 @@ services:
     container_name: gitserver
     image: cwrc/cwrc-gitserver:latest
     volumes:
-      - ./container_volumes/cwrc-gitserver/config.json:/apps/CWRC-GitServer/config.json
+      - ./container_volumes/cwrc-gitserver/config/:/apps/CWRC-GitServer/config/
     networks:
       - cwrc-gitwriter
     restart: unless-stopped
@@ -33,7 +33,7 @@ services:
     container_name: gitwriter
     image: cwrc/cwrc-gitwriter:latest
     volumes:
-      - ./container_volumes/cwrc-gitwriter/config.json:/apps/CWRC-GitWriter/build/config/config.json
+      - ./container_volumes/cwrc-gitwriter/config/:/apps/CWRC-GitWriter/build/config/
     networks:
       - cwrc-gitwriter
     restart: unless-stopped
@@ -49,7 +49,7 @@ services:
 
   nerve:
     container_name: nerve
-    image: registry.gitlab.com/calincs/conversion/nerve/releases:latest
+    image: registry.gitlab.com/calincs/conversion/nssi:latest
     environment:
       - LOG_LEVEL=VERBOSE # Log4J Logging level: WARN, VERBOSE
     volumes:

@@ -29,8 +29,8 @@ Remove the `.example` extension.
 
 - `container_volumes/traefik/traefik.yml`: set e-mail for Let's Encrypt (Step 3)
 - `container_volumes/traefik/conf/*`: set the host name (Step 4)
-- `container_volumes/cwrc-gitserver/config.json.example`: set the GitHub integration (Step 5-6)
-- `container_volumes/cwrc-gitwriter/config.json.example`: set the host for nerve and validator service (Step 7)
+- `container_volumes/cwrc-gitserver/config/config.json.example`: set the GitHub integration (Step 5-6)
+- `container_volumes/cwrc-gitwriter/config/config.json.example`: set the host for nerve and validator service (Step 7)
 
 #### 3.Setup Let's Encrypt certificate generation
 
@@ -57,17 +57,17 @@ Remove the `.example` extension.
 
 Details <https://github.com/cwrc/CWRC-GitServer#config>
 
-On cwrc-gitserver/config.json:
+On cwrc-gitserver/config/config.json:
 
 - Update `Client ID` and the `Client Secret` from above
 - Update `jwt_secret` with a randomly generated string of characters
 - Update `github_client_origin`,`github_oath_callback` and `github_oath_callback` with the server host name
 
-#### 7.Setup CWRC-GitWriter config.
+#### 7.Setup CWRC-GitWriter config
 
 CWRC-GitWriter comes with basic configurations. Relevant information for a server setup is the following:
 
-On cwrc-gitwriter/config.json:
+On cwrc-gitwriter/config/config.json:
 
 - `nerveUrl: 'https://YOUR.DOMAIN/nerve/'`,
 - `validationUrl: 'https://YOUR.DOMAIN/validator/validate.html'`

@@ -1,5 +1,5 @@
-container_volumes/cwrc-gitserver/*.json
-container_volumes/cwrc-gitwriter/*.json
+container_volumes/cwrc-gitserver/config/*.json
+container_volumes/cwrc-gitwriter/config/*.json
 container_volumes/nerve/
 container_volumes/validator/
 
